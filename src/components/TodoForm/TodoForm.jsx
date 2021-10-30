@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './TodoForm.module.css'
+import ContentEditable from "react-contenteditable";
 
 const TodoForm = ({
                     inputRef,
@@ -11,6 +12,7 @@ const TodoForm = ({
                     editMode,
                     arrayHashes
                   }) => {
+
   return (
     <div className={style.formTodo}>
       <div className={style.inputWithButtons}>
@@ -18,19 +20,20 @@ const TodoForm = ({
           <label htmlFor="inputTodo" hidden>
             Todo input
           </label>
-          <input
-            type="text"
-            className={style.formInput}
-            id='inputTodo'
-            ref={inputRef}
-            value={valueInput}
-            onChange={handleChangeInput}
-            onKeyPress={e => {
-              if (e.key === 'Enter') {
-                addTodo()
-              }
-            }}
-          />
+          {/*<input*/}
+          {/*  type="text"*/}
+          {/*  className={style.formInput}*/}
+          {/*  id='inputTodo'*/}
+          {/*  ref={inputRef}*/}
+          {/*  value={valueInput}*/}
+          {/*  onChange={handleChangeInput}*/}
+          {/*  onKeyPress={e => {*/}
+          {/*    if (e.key === 'Enter') {*/}
+          {/*      addTodo()*/}
+          {/*    }*/}
+          {/*  }}*/}
+          {/*/>*/}
+
         </div>
 
         <div>

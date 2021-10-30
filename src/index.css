@@ -29,9 +29,23 @@ h1,h2,h3,h4,h5,h6 {
   background-color: #4293d8;
   margin: 0 auto;
   border-radius: 5px;
+  padding-bottom: 30px;
 }
 
 .todosAndTags{
   display: flex;
   padding-top: 30px;
+}
+
+.contenteditable {
+  padding: 5px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  font-size: 18px;
+  outline: none;
+  background: #fff;
+  margin: 20px;
+  white-space: pre-wrap;
 }

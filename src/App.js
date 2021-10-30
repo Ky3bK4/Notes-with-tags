@@ -7,12 +7,11 @@ import TagsList from './components/TagsList/TagsList';
 
 function App() {
   const inputRef = useRef()
+  const [valueInput, setValueInput] = useState('sdw')
 
-  const [valueInput, setValueInput] = useState('')
-
-  const [todos, setTodos] = useState(()=> {
+  const [todos, setTodos] = useState(() => {
     const storageTodo = JSON.parse(localStorage.getItem('todos'))
-    if(storageTodo) return storageTodo
+    if (storageTodo) return storageTodo
     return []
   })
 
@@ -25,15 +24,15 @@ function App() {
   const [arrayHashes, setArrayHashes] = useState([])
 
 
-  const searchForHash = (value, allIncedents = false) => {
+  const searchForHash = (value, allIncidents = false) => {
     let arrHash;
-    if(allIncedents) {
+    if (allIncidents) {
       arrHash = value.match(/(#\S+\s)|(#\S+)$/g)
     } else {
       arrHash = value.match(/(#\S+\s)/g)
     }
 
-    if(arrHash) {
+    if (arrHash) {
       arrHash = arrHash.map(hash => hash.trim())
       arrHash = [...new Set(arrHash)]
       return arrHash
@@ -43,16 +42,16 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
-  },[todos])
+  }, [todos])
 
   useEffect(() => {
-    if(soughtHash) {
+    if (soughtHash) {
       let searchTodo = todos.filter(todo => todo.hashes.includes(soughtHash))
       setFilteredTodos(searchTodo)
     } else {
       setFilteredTodos(todos)
     }
-  },[soughtHash, todos])
+  }, [soughtHash, todos])
 
   const handleChangeInput = (e) => {
     const hashes = searchForHash(e.target.value)
@@ -61,19 +60,21 @@ function App() {
   }
 
   const addTodo = () => {
-    if(valueInput.length !== 0){
-      let hashArray = searchForHash(valueInput, true)
-
-      const newTodo = {
-        id: todos.length ? todos[todos.length-1].id + 1 : 0,
-        text: valueInput,
-        hashes: hashArray
-      }
-
-      setTodos([...todos, newTodo])
-      setValueInput('')
-      setArrayHashes([])
-    }
+    const w = valueInput
+    debugger
+    // if (valueInput.length !== 0) {
+    //   let hashArray = searchForHash(valueInput, true)
+    //
+    //   const newTodo = {
+    //     id: todos.length ? todos[todos.length - 1].id + 1 : 0,
+    //     text: valueInput,
+    //     hashes: hashArray
+    //   }
+    //
+    //   setTodos([...todos, newTodo])
+    //   setValueInput('')
+    //   setArrayHashes([])
+    // }
   }
 
   const deleteTodo = id => {
@@ -89,11 +90,11 @@ function App() {
   }
 
   const saveChanges = () => {
-    if(valueInput.length !== 0) {
+    if (valueInput.length !== 0) {
       let hashArray = searchForHash(valueInput, true)
 
       const newTodos = todos.map(todo => {
-        if(todo.id === currentTodo.id) {
+        if (todo.id === currentTodo.id) {
           return {
             id: currentTodo.id,
             text: valueInput,
@@ -117,7 +118,7 @@ function App() {
   }
 
   const handleClickHash = (hash) => {
-    if(hash) {
+    if (hash) {
       setSoughtHash(hash)
     } else {
       setSoughtHash(null)
@@ -151,7 +152,6 @@ function App() {
           handleClickHash={handleClickHash}
         />
       </div>
-
     </div>
   );
 }
