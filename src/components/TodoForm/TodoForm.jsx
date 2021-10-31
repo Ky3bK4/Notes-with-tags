@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './TodoForm.module.css'
-import ContentEditable from "react-contenteditable";
 
 const TodoForm = ({
                     inputRef,
@@ -20,22 +19,21 @@ const TodoForm = ({
           <label htmlFor="inputTodo" hidden>
             Todo input
           </label>
-          {/*<input*/}
-          {/*  type="text"*/}
-          {/*  className={style.formInput}*/}
-          {/*  id='inputTodo'*/}
-          {/*  ref={inputRef}*/}
-          {/*  value={valueInput}*/}
-          {/*  onChange={handleChangeInput}*/}
-          {/*  onKeyPress={e => {*/}
-          {/*    if (e.key === 'Enter') {*/}
-          {/*      addTodo()*/}
-          {/*    }*/}
-          {/*  }}*/}
-          {/*/>*/}
+          <input
+            type="text"
+            className={style.formInput}
+            id='inputTodo'
+            ref={inputRef}
+            value={valueInput}
+            onChange={handleChangeInput}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                addTodo()
+              }
+            }}
+          />
 
         </div>
-
         <div>
           {
             editMode ?
@@ -44,19 +42,20 @@ const TodoForm = ({
                   onClick={cancelEdit}
                   className={`${style.btn} ${style.btnCancel}`}
                 >
-                  &#10006;
+                  <i className="icon-cancel"/>
                 </button>
                 <button
                   onClick={saveChanges}
                   className={`${style.btn} ${style.btnSave}`}
                 >
-                  &#10003;</button>
+                 <i className="icon-ok"/>
+                </button>
               </> :
               <button
                 onClick={addTodo}
                 className={`${style.btn} ${style.btnAdd}`}
               >
-                +
+                <i className="icon-plus"/>
               </button>
           }
         </div>

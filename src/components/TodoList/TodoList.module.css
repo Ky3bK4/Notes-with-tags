@@ -3,9 +3,48 @@
 }
 
 .todoList {
-
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
 }
 
 .todoItem {
+  border: 1px solid #fff;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  color: #fff;
+}
 
+.todoItem .text {
+  max-width: 310px;
+  word-break: break-all;
+}
+
+.todoItem div {
+  margin-left: 20px;
+}
+
+.btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.btnEdit:hover {
+  background: #3e3e3e;
+  color: #34c7b9;
+}
+
+.btnDelete:hover {
+  background: #3e3e3e;
+  color: #e73f53;
 }

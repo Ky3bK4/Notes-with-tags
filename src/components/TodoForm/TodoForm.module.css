@@ -41,7 +41,8 @@
 }
 
 .btnCancel:hover{
-  background-color: #ea2323;
+  background-color: #505050;
+  color: #ff2e35;
 }
 
 .btnSave {
@@ -50,7 +51,8 @@
 }
 
 .btnSave:hover {
-  background-color: #13da10;
+  background-color: #505050;
+  color: #2eff48;
 }
 
 .hashItem {

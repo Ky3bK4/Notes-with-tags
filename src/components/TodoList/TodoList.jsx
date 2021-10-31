@@ -9,17 +9,19 @@ const TodoList = ({todos,handleEditTodo,deleteTodo}) => {
         key={todo.id}
         className={style.todoItem}
       >
-        {todo.text}
+        <span className={style.text}>{todo.text}</span>
         <div>
           <button
+            className={`${style.btn} ${style.btnEdit}`}
             onClick={(e)=> handleEditTodo(todo)}
           >
-            Edit
+            <i className="icon-edit"/>
           </button>
           <button
+            className={`${style.btn} ${style.btnDelete}`}
             onClick={()=>deleteTodo(todo.id)}
           >
-            X
+            <i className="icon-trash-empty"/>
           </button>
         </div>
       </li>

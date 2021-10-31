@@ -1,3 +1,4 @@
+import './assets/font/iconsfont.css'
 import './App.css';
 import React, {useEffect, useRef, useState} from 'react';
 import TodoList from './components/TodoList/TodoList';
@@ -7,7 +8,8 @@ import TagsList from './components/TagsList/TagsList';
 
 function App() {
   const inputRef = useRef()
-  const [valueInput, setValueInput] = useState('sdw')
+
+  const [valueInput, setValueInput] = useState('')
 
   const [todos, setTodos] = useState(() => {
     const storageTodo = JSON.parse(localStorage.getItem('todos'))
@@ -22,7 +24,6 @@ function App() {
   const [currentTodo, setCurrentTodo] = useState(null)
 
   const [arrayHashes, setArrayHashes] = useState([])
-
 
   const searchForHash = (value, allIncidents = false) => {
     let arrHash;
@@ -54,27 +55,27 @@ function App() {
   }, [soughtHash, todos])
 
   const handleChangeInput = (e) => {
-    const hashes = searchForHash(e.target.value)
+    const value = e.target.value
+    const hashes = searchForHash(value)
     setArrayHashes(hashes)
-    setValueInput(e.target.value)
+
+    setValueInput(value)
   }
 
   const addTodo = () => {
-    const w = valueInput
-    debugger
-    // if (valueInput.length !== 0) {
-    //   let hashArray = searchForHash(valueInput, true)
-    //
-    //   const newTodo = {
-    //     id: todos.length ? todos[todos.length - 1].id + 1 : 0,
-    //     text: valueInput,
-    //     hashes: hashArray
-    //   }
-    //
-    //   setTodos([...todos, newTodo])
-    //   setValueInput('')
-    //   setArrayHashes([])
-    // }
+    if (valueInput.length !== 0) {
+      let hashArray = searchForHash(valueInput, true)
+
+      const newTodo = {
+        id: todos.length ? todos[todos.length - 1].id + 1 : 0,
+        text: valueInput,
+        hashes: hashArray
+      }
+
+      setTodos([...todos, newTodo])
+      setValueInput('')
+      setArrayHashes([])
+    }
   }
 
   const deleteTodo = id => {
@@ -149,6 +150,7 @@ function App() {
         />
         <TagsList
           todos={todos}
+          soughtHash = {soughtHash}
           handleClickHash={handleClickHash}
         />
       </div>
