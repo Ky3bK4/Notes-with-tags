@@ -28,11 +28,10 @@ const TodoForm = ({
             onChange={handleChangeInput}
             onKeyPress={e => {
               if (e.key === 'Enter') {
-                addTodo()
+                editMode ? saveChanges() : addTodo();
               }
             }}
           />
-
         </div>
         <div>
           {
